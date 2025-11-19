@@ -1265,12 +1265,12 @@ It's better to have 3 complete files than 10 incomplete files.`
         };
         
         // Add temperature for non-reasoning models
-        if (!model.startsWith('openai/gpt-5')) {
+        if (!model.startsWith('gpt-5') && !model.startsWith('openai/gpt-5')) {
           streamOptions.temperature = 0.7;
         }
         
         // Add reasoning effort for GPT-5 models
-        if (isOpenAI) {
+        if (model.includes('gpt-5')) {
           streamOptions.experimental_providerMetadata = {
             openai: {
               reasoningEffort: 'high'
