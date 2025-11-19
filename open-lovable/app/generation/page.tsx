@@ -3082,11 +3082,12 @@ Focus on the key sections and content, making it clean and modern.`;
           // First application for cloned site should not be in edit mode
           await applyGeneratedCode(generatedCode, false);
           
+          const scrapedUrl = homeUrlInput.match(/^https?:\/\//i) ? homeUrlInput : 'https://' + homeUrlInput;
           addChatMessage(
-            `Successfully recreated ${url} as a modern React app${homeContextInput ? ` with your requested context: "${homeContextInput}"` : ''}! The scraped content is now in my context, so you can ask me to modify specific sections or add features based on the original site.`, 
+            `Successfully recreated ${scrapedUrl} as a modern React app${homeContextInput ? ` with your requested context: "${homeContextInput}"` : ''}! The scraped content is now in my context, so you can ask me to modify specific sections or add features based on the original site.`, 
             'ai',
             {
-              scrapedUrl: url,
+              scrapedUrl: scrapedUrl,
               scrapedContent: scrapeData,
               generatedCode: generatedCode
             }
