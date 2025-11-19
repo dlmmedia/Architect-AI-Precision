@@ -3083,12 +3083,14 @@ Focus on the key sections and content, making it clean and modern.`;
           await applyGeneratedCode(generatedCode, false);
           
           const scrapedUrl = homeUrlInput.match(/^https?:\/\//i) ? homeUrlInput : 'https://' + homeUrlInput;
+          // Get the most recent scraped website from context
+          const lastScrapedSite = conversationContext.scrapedWebsites[conversationContext.scrapedWebsites.length - 1];
           addChatMessage(
             `Successfully recreated ${scrapedUrl} as a modern React app${homeContextInput ? ` with your requested context: "${homeContextInput}"` : ''}! The scraped content is now in my context, so you can ask me to modify specific sections or add features based on the original site.`, 
             'ai',
             {
               scrapedUrl: scrapedUrl,
-              scrapedContent: scrapeData,
+              scrapedContent: lastScrapedSite?.content,
               generatedCode: generatedCode
             }
           );
