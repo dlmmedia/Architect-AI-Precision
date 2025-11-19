@@ -1311,11 +1311,11 @@ It's better to have 3 complete files than 10 incomplete files.`
               // Final error, send to user
               await sendProgress({ 
                 type: 'error', 
-                message: `Failed to initialize ${isGoogle ? 'Gemini' : isAnthropic ? 'Claude' : isOpenAI ? 'GPT-5' : isKimiGroq ? 'Kimi (Groq)' : 'Groq'} streaming: ${streamError.message}` 
+                message: `Failed to initialize OpenAI streaming: ${streamError.message}` 
               });
               
-              // If this is a Google model error, provide helpful info
-              if (isGoogle) {
+              // If this is an OpenAI error, provide helpful info
+              if (streamError.message.includes('API key')) {
                 await sendProgress({ 
                   type: 'info', 
                   message: 'Tip: Make sure your GEMINI_API_KEY is set correctly and has proper permissions.' 
