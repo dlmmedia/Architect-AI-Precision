@@ -1318,7 +1318,7 @@ It's better to have 3 complete files than 10 incomplete files.`
               if (streamError.message.includes('API key')) {
                 await sendProgress({ 
                   type: 'info', 
-                  message: 'Tip: Make sure your GEMINI_API_KEY is set correctly and has proper permissions.' 
+                  message: 'Tip: Make sure your OPENAI_API_KEY is set correctly and has proper permissions.' 
                 });
               }
               
